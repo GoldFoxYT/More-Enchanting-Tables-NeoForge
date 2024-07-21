@@ -1,15 +1,19 @@
 package net.goldfoxyt.met.datagen;
 
 import net.goldfoxyt.met.Met;
+import net.goldfoxyt.met.block.ColoredEnchantingTable;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -41,8 +45,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         addEnchantingTableRecipes(pRecipeOutput, GREEN_ENCHANTING_TABLE, GREEN_CARPET, GREEN_DYE);
         addEnchantingTableRecipes(pRecipeOutput, BLACK_ENCHANTING_TABLE, BLACK_CARPET, BLACK_DYE);
     }
-    public void addEnchantingTableRecipes(RecipeOutput recipeOutput, DeferredBlock block, Item carpetItem, Item dyeItem) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, block)
+    public void addEnchantingTableRecipes(RecipeOutput recipeOutput, DeferredHolder<Block, ColoredEnchantingTable> block, Item carpetItem, Item dyeItem) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, block.get())
                 .pattern(" B ")
                 .pattern("DCD")
                 .pattern("DOD")
@@ -53,7 +57,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_obsidian", has(Blocks.OBSIDIAN))
                 .save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, block)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, block.get())
                 .requires(Blocks.ENCHANTING_TABLE)
                 .requires(dyeItem)
                 .unlockedBy("has_obsidian", has(Blocks.OBSIDIAN))

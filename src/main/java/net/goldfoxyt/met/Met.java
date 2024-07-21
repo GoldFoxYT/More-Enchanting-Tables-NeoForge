@@ -44,21 +44,21 @@ public class Met {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(ModBlocks.WHITE_ENCHANTING_TABLE);
-            event.accept(ModBlocks.ORANGE_ENCHANTING_TABLE);
-            event.accept(ModBlocks.MAGENTA_ENCHANTING_TABLE);
-            event.accept(ModBlocks.LIGHT_BLUE_ENCHANTING_TABLE);
-            event.accept(ModBlocks.YELLOW_ENCHANTING_TABLE);
-            event.accept(ModBlocks.LIME_ENCHANTING_TABLE);
-            event.accept(ModBlocks.PINK_ENCHANTING_TABLE);
-            event.accept(ModBlocks.GRAY_ENCHANTING_TABLE);
-            event.accept(ModBlocks.LIGHT_GRAY_ENCHANTING_TABLE);
-            event.accept(ModBlocks.CYAN_ENCHANTING_TABLE);
-            event.accept(ModBlocks.PURPLE_ENCHANTING_TABLE);
-            event.accept(ModBlocks.BLUE_ENCHANTING_TABLE);
-            event.accept(ModBlocks.BROWN_ENCHANTING_TABLE);
-            event.accept(ModBlocks.GREEN_ENCHANTING_TABLE);
-            event.accept(ModBlocks.BLACK_ENCHANTING_TABLE);
+            event.accept(ModBlocks.WHITE_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.ORANGE_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.MAGENTA_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.LIGHT_BLUE_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.YELLOW_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.LIME_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.PINK_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.GRAY_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.LIGHT_GRAY_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.CYAN_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.PURPLE_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.BLUE_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.BROWN_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.GREEN_ENCHANTING_TABLE.get());
+            event.accept(ModBlocks.BLACK_ENCHANTING_TABLE.get());
         }
     }
 
@@ -75,10 +75,8 @@ public class Met {
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> BlockEntityRenderers.register(ModBlockEntities.COLORED_ENCHANTING_TABLE.get(), ColoredEnchantingTableRenderer::new));
         }
-    }
-
-    @SubscribeEvent
-    public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ModBlockEntities.COLORED_ENCHANTING_TABLE.get(), ColoredEnchantingTableRenderer::new);
+        public void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.COLORED_ENCHANTING_TABLE.get(), ColoredEnchantingTableRenderer::new);
+        }
     }
 }

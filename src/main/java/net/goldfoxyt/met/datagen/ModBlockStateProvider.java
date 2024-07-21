@@ -4,13 +4,12 @@ import net.goldfoxyt.met.Met;
 import net.goldfoxyt.met.block.ColoredEnchantingTable;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static net.goldfoxyt.met.block.ModBlocks.*;
@@ -40,7 +39,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         createCustomEnchantingTable(GREEN_ENCHANTING_TABLE);
         createCustomEnchantingTable(BLACK_ENCHANTING_TABLE);
     }
-    private void createCustomEnchantingTable(DeferredHolder<Block, ? extends ColoredEnchantingTable> holder) {
+    private void createCustomEnchantingTable(DeferredHolder<Block, ColoredEnchantingTable> holder) {
         Block block = holder.get();
         String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
 
