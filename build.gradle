@@ -161,7 +161,6 @@ tasks.withType(ProcessResources).configureEach {
         expand replaceProperties
     }
 }
-
 // Example configuration to allow publishing using the maven-publish plugin
 publishing {
     publications {
